@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes jeux rétros - Dams {% endblock %}
+
+{% block body %}
+<h1> Mes jeux rétros préférés</h1>
+
+    <div class="row">
+    {% for product in products %}
+        <div class="col-md-4">
+            <div class="product-item text-center">
+
+            <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" width="150px">
+                <h5>{{ product.name }}</h5>
+            <span> {{ product.subtitle }}</span>
+            <p> {{ product.description }}</p>
+                <span><b> {{ product.price }} € </b></span>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
