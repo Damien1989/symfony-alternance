@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ product.name }} {% endblock %}
+{% block title %} {{ product.name }} Dams Enterprise {% endblock %}
 
 {% block body %}
 
     <div class="row">
-        <div class="col-md-5">
-            <a href="{{ path ('product', {'slug' : product.slug}) }}"></a> <img src="/uploads/{{ product.picture }}" alt=" {{ product.name }}" class="img-fluid">
-        </div>
-        <div class="col-md-7 my-auto">
+        <div class="product-item col-md-4 mt-5">
+            <a href="{{ path ('app_product_show', {'slug' : product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt=" {{ product.name }}" class="img-fluid"></a>
+        <div class="col-md-8 my-auto">
             <h3> {{ product.name }}</h3>
             <span class="product-page-price">{{ (product.price) }} €</span>
             <hr>
@@ -18,5 +17,5 @@
             <a href="" class="btn btn-primary">Ajouter au panier</a>
         </div>
     </div>
-
+    </div>
 {% endblock %}
