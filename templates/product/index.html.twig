@@ -3,7 +3,7 @@
 {% block title %}Mes jeux rétros - Dams {% endblock %}
 
 {% block body %}
-<h1> Mes jeux rétros préférés</h1>
+<h1 class="mt-4 text-center"> Mes jeux rétros préférés</h1>
 
     <div class="row">
     {% for product in products %}
@@ -11,9 +11,8 @@
             <div class="product-item text-center">
                 <a href="{{ path('app_product_show', { 'slug' : product.slug }) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" width="150px"></a>
                 <h5>{{ product.name }}</h5>
-            <span> {{ product.subtitle }}</span>
-            <p> {{ product.description }}</p>
-                <span><b> {{ product.price }} € </b></span>
+            <span class="product-subtitle mt-4"> {{ product.subtitle }}</span>
+                <span class="product-price"><b> {{ product.price }} € </b></span>
             </div>
         </div>
     {% endfor %}
