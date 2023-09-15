@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui suis-je ?{% endblock %}
+
+{% block body %}
+    <p class="text-center"><strong>DAMS Entrepise</strong> est un site web basé sur le multimédia crée par <b>Damien Diaz</b>.<br>
+        Vous pouvez consulter mes articles rétros qui feront plaisir aux nostalgiques. <br>
+        </p>
+    <hr>
+    <div class="img text-center">
+        <img src="{{ asset('assets/img/multimedia.jpg') }}" class="img-fluid" alt="">
+    </div>
+    <p class="text-center mt-4"> Profitez des nombreuses réductions en <a href="{{ path('register') }}"> vous inscrivant </a> sur ce site ! </p>
+{% endblock %}
