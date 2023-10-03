@@ -21,10 +21,11 @@
             </ul>
             <div class="navbar-item">
             {% if app.user %}
-                <a href="{{ path ('account') }}">Mon Compte <small>{{ app.user.firstname }} </small> </a> | <a href="{{ path ('logout') }}">Déconnexion</a>
+                <a href="{{ path ('account') }}"></i>Mon Compte <small>{{ app.user.firstname }} </small> </a> | <a href="{{ path ('logout') }}">Déconnexion</a>
             {% else %}
             <a href="{{ path ('login') }}">Connexion</a> | <a href="{{ path ('register') }}">Inscription</a>
             {% endif %}
+                <img src="{{ asset('assets/img/shopping.png') }}" class="icon-shopping" alt="panier" width="30px">
             </div>
         </div>
     </div>
