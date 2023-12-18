@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma musique{% endblock %}
+
+{% block body %}
+    <h1 class="mt-4 text-center"> Mes musiques préférées</h1>
+
+    {% for music in music %}
+
+        <div class="col-md-4">
+            <div class="product-item text-center">
+                <a href="{{ path('app_product_show', { 'slug' : music.slug }) }}"><img src="/uploads/{{ music.illustration }}" alt="{{ music.name }}" class="img-fluid" width="150px"></a>
+                <h5>{{ music.name }}</h5>
+                <span class="product-subtitle mt-4"> {{ music.subtitle }}</span>
+                <span class="product-price"><b> {{ music.price }} € </b></span>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
