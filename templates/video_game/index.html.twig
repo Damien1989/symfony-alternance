@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes jeux favoris{% endblock %}
+
+{% block body %}
+    <h1 class="mt-4 text-center"> Mes jeux rétros préférés</h1>
+
+    {% for game in game %}
+
+        <div class="col-md-4">
+            <div class="product-item text-center">
+                <a href="{{ path('app_product_show', { 'slug' : game.slug }) }}"><img src="/uploads/{{ game.illustration }}" alt="{{ game.name }}" class="img-fluid" width="150px"></a>
+                <h5>{{ game.name }}</h5>
+                <span class="product-subtitle mt-4"> {{ game.subtitle }}</span>
+                <span class="product-price"><b> {{ game.price }} € </b></span>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

@@ -17,7 +17,6 @@ class ProductController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-
     #[Route('/nos-produits', name: 'app_product')]
     public function index(): Response
     {
