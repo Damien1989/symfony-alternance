@@ -5,17 +5,19 @@
 {% block body %}
     <h1 class="mt-4 text-center"> Jeux rétros</h1>
 
+
+<div class="row">
     {% for game in game %}
 
         <div class="col-md-4">
             <div class="product-item text-center">
                 <a href="{{ path('app_product_show', { 'slug' : game.slug }) }}"><img src="/uploads/{{ game.illustration }}" alt="{{ game.name }}" class="img-fluid" width="150px"></a>
-                <h5>{{ game.name }}</h5>
-                <span class="product-subtitle mt-4"> {{ game.subtitle }}</span>
-                <span class="product-price"><b> {{ game.price }} € </b></span>
+                <h4>{{ game.name }}</h4>
+                <span class="product-subtitle mt-2"> {{ game.subtitle }}</span>
+                <span class="product-price mt-4"><b> {{ game.price }} € </b></span>
             </div>
         </div>
 
     {% endfor %}
-
+    </div>
 {% endblock %}

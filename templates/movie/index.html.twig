@@ -3,17 +3,18 @@
 {% block title %}Section Films {% endblock %}
 
 {% block body %}
-    <h1 class="mt-4 text-center"> Films</h1>
+    <h1 class="mt-4 text-center"> Films
 
+        <div class="row">
      {% for film in films %}
-
          <div class="col-md-4">
              <div class="product-item text-center">
                  <a href="{{ path('app_product_show', { 'slug' : film.slug }) }}"><img src="/uploads/{{ film.illustration }}" alt="{{ film.name }}" class="img-fluid" width="150px"></a>
-                 <h5>{{ film.name }}</h5>
-                 <span class="product-subtitle mt-4"> {{ film.subtitle }}</span>
-                 <span class="product-price"><b> {{ film.price }} € </b></span>
+                 <h4>{{ film.name }}</h4>
+                 <span class="product-subtitle mt-2"> {{ film.subtitle }}</span>
+                 <span class="product-price mt-4"><b> {{ film.price }} € </b></span>
              </div>
          </div>
      {% endfor %}
+        </div>
 {% endblock %}
