@@ -2,7 +2,11 @@
 
 namespace App\Form;
 
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,6 +20,30 @@ class ContactType extends AbstractType
                 'label' => 'Votre prénom',
                 'attr' => [
                     'placeholder' => 'Merci de saisir votre prénom'
+                ]
+            ])
+            ->add('nom', TextType::class, [
+                'label' => 'Votre nom',
+                'attr' => [
+                    'placeholder' => 'Merci de saisir votre nom'
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Votre Email',
+                'attr' => [
+                    'placeholder' => 'Merci de saisir votre Email'
+                ]
+            ])
+            ->add('message', TextareaType::class, [
+                'label' => 'Votre message',
+                'attr' => [
+                    'placeholder' => 'Ecrivez votre message...'
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Envoyer',
+                'attr' => [
+                    'class' => 'btn-block btn-success'
                 ]
             ])
         ;
