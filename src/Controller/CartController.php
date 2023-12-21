@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
+use App\Entity\Product;
+use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,11 +13,27 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
-    #[Route('/cart', name: 'cart')]
-    public function index(RequestStack $stack): Response
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        dd($stack->getSession()->get('cart'));
-        return $this->render('cart/index.html.twig');
+        $this->entityManager = $entityManager;
+    }
+    #[Route('/cart', name: 'cart')]
+    public function index(RequestStack $stack, ProductRepository $productRepository): Response
+    {
+        $cartComplete = [];
+
+        foreach ($stack->getSession()->get('cart') as $id => $quantity) {
+            $cartComplete[] = [
+                'product' => $productRepository->findOneBy(['id' => $id]),
+                'quantity' => $quantity
+            ];
+        }
+
+        return $this->render('cart/index.html.twig', [
+            'cart' => $cartComplete
+        ]);
     }
 
     /**
@@ -36,5 +55,17 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('products');
     }
+
+    /**
+     * @Route("/cart/delete{id}", name="delete_to_cart")
+     */
+    public function delete(Cart $cart, $id): Response
+    {
+        $cart->delete($id);
+
+        return $this->redirectToRoute('cart');
+    }
+
+
 
 }
