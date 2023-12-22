@@ -6,10 +6,10 @@
 
     <div class="row">
         <div class="col-md-4 mt-5">
-         <img src="/uploads/{{ product.illustration }}" alt=" {{ product.name }}" class="img-fluid"></a>
+         <img src="/uploads/{{ product.illustration }}" alt=" {{ product.name }}" class="img-fluid">
         <div class="col-md-8">
             <h3> {{ product.name }}</h3>
-            <span class="product-page-price">{{ (product.price / 100) |number_format(2, ',', '.') }} €</span>
+            <span class="product-page-price">{{ (product.price / 1) |number_format(2, ',', '.') }} €</span>
             <hr>
             <p class="product-description">
                 {{ product.description }}
