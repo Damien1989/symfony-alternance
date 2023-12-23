@@ -7,6 +7,7 @@
 Retrouvez l'ensemble des produits que vous avez ajouté à votre panier.
 <hr>
 
+    {% if cart|length > 0 %}
 <table class="table mt-3">
     <thead>
     <tr>
@@ -27,11 +28,17 @@ Retrouvez l'ensemble des produits que vous avez ajouté à votre panier.
             <td>{{ product.product.name }}<br/>
                 <small>{{ product.product.subtitle }}</small>
             </td>
-            <td>x {{ product.quantity }}</td>
-            <td>{{ (product.product.price / 100) |number_format(2, ',', '.') }} €</td>
-            <td>{{ ((product.product.price * product.quantity ) / 100) |number_format(2, ',', '.') }} €</td>
             <td>
-                <a href="">
+                <a href="{{ path('decrease_to_cart', { 'id' : product.product.id}) }}">
+                    <img src="{{ asset('assets/img/less.png') }}" height="21px" alt="Enlever mon produit">
+                </a>
+                x {{ product.quantity }}
+                <a href="{{ path('add_to_cart', { 'id' : product.product.id}) }}">
+                    <img src="{{ asset('assets/img/more.png') }}" height="21px" alt="Ajouter un produit"></td>
+            <td>{{ (product.product.price / 1) |number_format(2, ',', '.') }} €</td>
+            <td>{{ ((product.product.price * product.quantity ) / 1) |number_format(2, ',', '.') }} €</td>
+            <td>
+                <a href="{{ path('delete_to_cart', { 'id' : product.product.id}) }}">
                     <img src="{{ asset('assets/img/trash.png') }}" height="21px" alt="Supprimer mon produit"></td>
             </a>
         </tr>
@@ -41,7 +48,11 @@ Retrouvez l'ensemble des produits que vous avez ajouté à votre panier.
 </table>
 <div class="text-right mb-5">
     <b>Nombre de produits :</b> {{ cart|length }}</br>
-    <b> Total de mon panier</b> {{ (total / 100) |number_format(2, ',', '.') }} €
+    <b> Total de mon panier</b> {{ (total / 1) |number_format(2, ',', '.') }} €
     <a href="" class="btn btn-success btn-block">Valider mon panier</a>
+    {% else %}
+        <hr>
+        <p><b>Votre panier est vide.</b></p>
+    {% endif %}
 </div>
 {% endblock %}

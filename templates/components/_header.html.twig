@@ -25,7 +25,8 @@
             {% else %}
             <a href="{{ path ('login') }}">Connexion</a> | <a href="{{ path ('register') }}">Inscription</a>
             {% endif %}
-                <img src="{{ asset('assets/img/shopping.png') }}" class="icon-shopping" alt="panier" width="30px">
+                <a href="{{ path('cart') }}">
+                    <img src="{{ asset('assets/img/shopping.png') }}" class="icon-shopping" alt="panier" width="30px"></a>
             </div>
         </div>
     </div>

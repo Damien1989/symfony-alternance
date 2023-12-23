@@ -24,11 +24,13 @@ class CartController extends AbstractController
     {
         $cartComplete = [];
 
-        foreach ($stack->getSession()->get('cart') as $id => $quantity) {
-            $cartComplete[] = [
-                'product' => $productRepository->findOneBy(['id' => $id]),
-                'quantity' => $quantity
-            ];
+        if ($stack->getSession()->get('cart') !== null) {
+            foreach ($stack->getSession()->get('cart') as $id => $quantity) {
+                $cartComplete[] = [
+                    'product' => $productRepository->findOneBy(['id' => $id]),
+                    'quantity' => $quantity
+                ];
+            }
         }
 
         return $this->render('cart/index.html.twig', [
@@ -62,6 +64,16 @@ class CartController extends AbstractController
     public function delete(Cart $cart, $id): Response
     {
         $cart->delete($id);
+
+        return $this->redirectToRoute('cart');
+    }
+
+    /**
+     * @Route("/cart/decrease{id}", name="decrease_to_cart")
+     */
+    public function decrease(Cart $cart, $id): Response
+    {
+        $cart->decrease($id);
 
         return $this->redirectToRoute('cart');
     }
