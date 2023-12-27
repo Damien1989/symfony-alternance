@@ -7,7 +7,7 @@
 
     <div class="row">
     {% for music in music %}
-        <div class="col-md-4 m-lg-5">
+        <div class="col-md-4">
             <div class="product-item text-center">
                 <a href="{{ path('app_product_show', { 'slug' : music.slug }) }}"><img src="/uploads/{{ music.illustration }}" alt="{{ music.name }}" class="img-fluid" width="200px"></a>
                 <h4>{{ music.name }}</h4>
