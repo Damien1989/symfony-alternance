@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block javascript %}
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
 {% block title %}Valider mes commandes{% endblock %}
 
 {% block body %}
@@ -52,7 +56,7 @@
             <strong>Livraison : </strong>{{ (carrier.price) |number_format(2, ',', '.') }} €
             <hr>
             <strong>Total : </strong>{{ ((total / 1) + carrier.price) |number_format(2, ',', '.')  }} €
-            <a href="" class="btn btn-success btn-block mt-3">Payer {{ ((total / 1) + carrier.price) |number_format(2, ',', '.')  }} €</a>
+            <a href="{{ path('stripe_create_session', {'reference': reference}) }}" class="btn btn-success btn-block mt-3">Payer {{ ((total / 1) + carrier.price) |number_format(2, ',', '.')  }} €</a>
         </div>
     </div>
 {% endblock %}
