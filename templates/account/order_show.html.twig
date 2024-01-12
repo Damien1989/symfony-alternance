@@ -32,7 +32,7 @@
         {% endfor %}
         </tbody>
     </table>
-    <div class="text-right">
+    <div class="text-right mt-4">
         <strong>Sous-total : </strong> {{ (order.getTotal / 1)|number_format(2, ',', '.') }} €<br/>
         <strong>Livraison : </strong> {{ (order.carrierPrice / 1)|number_format(2, ',', '.') }} €<br/>
         <strong>Total : </strong> {{ ((order.carrierPrice +  order.getTotal) / 1)|number_format(2, ',','.') }} €
