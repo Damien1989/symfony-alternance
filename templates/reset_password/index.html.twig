@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dams - Mot de passe oublié{% endblock %}
+
+{% block body %}
+    <div class="block-small">
+        <form method="post">
+            <h1 class="h3 mb-3 font-weight-normal">Réinitialiser mot de passe</h1>
+            <label for="inputEmail">Votre Email</label>
+            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Votre Email" autocomplete="email" required autofocus>
+
+            <button class="btn btn-lg btn-info btn-block mb-4"  type="submit">
+                Valider
+            </button>
+            <hr>
+            <p class="text-center">Souhaitez-vous <a href="{{ path('register') }}">créer un compte</a>?</p>
+        </form>
+    </div>
+{% endblock %}

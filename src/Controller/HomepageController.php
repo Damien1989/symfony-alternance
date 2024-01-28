@@ -12,6 +12,9 @@ class HomepageController extends AbstractController
     #[Route('/', name: 'homepage')]
     public function index(): Response
     {
+        $mail = new Mail();
+        $mail->send('contact.shopdams@gmail.com', 'Damien Diaz', 'Hello', 'Bordel tu vas t\'envoyer connard de mail !!!' );
+
         return $this->render('homepage/index.html.twig', [
             'name' => 'Dams Magazine',
 
